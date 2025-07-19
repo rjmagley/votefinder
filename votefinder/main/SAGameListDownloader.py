@@ -9,7 +9,7 @@ from votefinder.main import SAForumPageDownloader
 class SAGameListDownloader():
     def __init__(self):
         self.GameList = []
-        self.downloader = SAForumPageDownloader.SAForumPageDownloader()
+        self.downloader = SAForumPageDownloader.get_sa_downloader()
 
     def get_game_list(self, page):
         game_raw_html = self.download_list(page)

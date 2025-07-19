@@ -19,7 +19,7 @@ class SAPageParser:
         self.gamePlayers = []
         self.votes = []
         self.user = None
-        self.downloader = SAForumPageDownloader.SAForumPageDownloader()
+        self.downloader = SAForumPageDownloader.get_sa_downloader()
 
     def add_game(self, threadid, state):
         self.new_game = True

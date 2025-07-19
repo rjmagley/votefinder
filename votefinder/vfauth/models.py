@@ -4,7 +4,7 @@ import urllib
 from django import forms
 from django.contrib.auth.models import User
 from votefinder.main.BNRApi import BNRApi
-from votefinder.main.SAForumPageDownloader import SAForumPageDownloader
+from votefinder.main.SAForumPageDownloader import get_sa_downloader
 from votefinder.main.models import Player, UserProfile
 
 
@@ -43,7 +43,7 @@ class LinkProfileForm(forms.Form):
 
         if self.required_key:
             if home_forum == 'sa':
-                downloader = SAForumPageDownloader()
+                downloader = get_sa_downloader()
                 page_data = downloader.download(
                     f'https://forums.somethingawful.com/member.php?action=getinfo&username={urllib.parse.quote_plus(login)}')
 

@@ -81,7 +81,7 @@ class VoteCounter:
         if game.home_forum == 'sa':
             message = f':redhammer: {message}'
             message += vc_formatter.get_escaped_bbcode()
-            dl = SAForumPageDownloader.SAForumPageDownloader()
+            dl = SAForumPageDownloader.get_sa_downloader()
         elif game.home_forum == 'bnr':
             message += vc_formatter.get_bbcode()
             dl = BNRApi.BNRApi()

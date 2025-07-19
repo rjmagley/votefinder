@@ -285,7 +285,7 @@ def claim_player(request, playerid):
             csrf_resp.update(csrf(request))
             if request.session['claim_key']:
                 if player.sa_uid is not None:
-                    downloader = SAForumPageDownloader.SAForumPageDownloader()
+                    downloader = SAForumPageDownloader.get_sa_downloader()
                     page_data = downloader.download(
                         f'https://forums.somethingawful.com/member.php?action=getinfo&userid={player.sa_uid}')
 
@@ -1081,7 +1081,7 @@ def post_vc(request, gameid):
         vc_formatter = VotecountFormatter.VotecountFormatter(game)
         vc_formatter.go()
         if game.home_forum == 'sa':
-            dl = SAForumPageDownloader.SAForumPageDownloader()
+            dl = SAForumPageDownloader.get_sa_downloader()
             dl.reply_to_thread(game.thread_id, vc_formatter.get_escaped_bbcode())
         elif game.home_forum == 'bnr':
             dl = BNRApi.BNRApi()

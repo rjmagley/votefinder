@@ -9,6 +9,9 @@ from django.conf import settings
 import logging
 logger = logging.getLogger(__name__)
 
+def get_sa_downloader():
+    return _downloader
+
 
 class SAForumPageDownloader():
     def __init__(self):
@@ -91,3 +94,5 @@ class SAForumPageDownloader():
         inputs.pop('preview')
 
         self.session.post(post_url, inputs)
+
+_downloader = SAForumPageDownloader()
