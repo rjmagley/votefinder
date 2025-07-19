@@ -7,3 +7,4 @@ guni.log
 Pipfile
 Pipfile.lock
 /vfvenv
+docker-compose.yml
