@@ -52,7 +52,6 @@ urlpatterns = [
     re_path(r'^add_faction/(?P<gameid>\d+)$', views.add_faction),
     re_path(r'^delete_faction/(?P<factionid>\d+)$', views.delete_faction),
     re_path(r'^img/(?P<slug>[\w-]+)/*$', views.votecount_image),
-    path('autoupdate/', views.autoupdate),
     path('players/', views.players),
     re_path(r'^players/(?P<page>\d+)$', views.players_page),
     re_path(r'^delete_alias/(?P<aliasid>\d+)$', views.delete_alias),

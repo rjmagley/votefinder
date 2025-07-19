@@ -950,21 +950,6 @@ def votecount_image(request, slug):
         return response
 
 
-def autoupdate(request):
-    games = Game.objects.exclude(state='closed').order_by('-last_updated')
-    for game in games:
-        key = f'{game.slug}-vc-image'
-        cache.delete(key)  # image will regenerate on next GET
-        game = check_update_game(game)
-        post = game.posts.order_by('-timestamp')[:1][0]
-
-        if datetime.now() - post.timestamp > timedelta(days=6) and game.state == 'started':
-            game.status_update('Closed automatically for inactivity.')
-            game.state = 'closed'
-            game.save()
-    return HttpResponse('Ok')
-
-
 def players(request):
     return players_page(request, 1)
 
